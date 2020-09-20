@@ -7,6 +7,10 @@ pipeline {
           
             steps {
                 echo "building the pipeline..." 
+                script {
+                    def test = 2 + 2 > 5 ? 'Cool' : 'Not So Cool'
+                    echo test
+                }
             }
         }
 
