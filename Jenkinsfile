@@ -18,6 +18,7 @@ pipeline {
           
             steps {
                 echo "testing the pipeline..." 
+		echo "check added to review SCM triggers..."
             }   
         }
 
