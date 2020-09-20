@@ -16,8 +16,10 @@ pipeline {
         stage("run backend") {
           
             steps {
-                echo "executing gradle..." 
-                    sh 'mvn -v'
+                echo "executing maven..." 
+                    def mavenHome = tool name: "maven-3.6.3", type: "maven"
+                    def mavenCMD = "${mavenHome}/bin/mvn -v"
+                    sh "${mavenCMD}"
             }   
         }
 
