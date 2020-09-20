@@ -3,22 +3,23 @@ pipeline {
     
     stages {
     
-        stage("build") {
+        stage("run frontend") {
           
             steps {
-                echo "building the pipeline..." 
-                script {
-                    def test = 2 + 2 > 5 ? 'Cool' : 'Not So Cool'
-                    echo test
+                echo "executing yarn..." 
+                nodejs('nodejs-10.17.0') {
+                    sh 'yarn install'
                 }
             }
         }
 
-        stage("test") {
+        stage("run backend") {
           
             steps {
-                echo "testing the pipeline..." 
-		echo "check added to review SCM triggers..."
+                echo "executing gradle..." 
+                withGradle() {
+                    sh ./gradlew -v
+                }
             }   
         }
 
